@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import CompilerPluginSupport
 
 let package = Package(
     name: "SwiftUINavigation",
-    platforms: [.iOS(.v16), .macOS(.v13), .macCatalyst(.v16)],
+    platforms: [.iOS(.v26), .macOS(.v26), .macCatalyst(.v26)],
     products: [
         .library(
             name: "SwiftUINavigation",

@@ -1,36 +1,24 @@
 import SwiftUI
 
-// TODO: Implement new iOS 18 Tab API
 public struct DefaultTabModel: TabModel {
-
     public let id: AnyHashable
-    private let image: Image
-    private let title: String
+    public let title: String
+    public let systemImage: String
+    public let role: TabRole?
     public let navigationModel: any NavigationModel
+    
+    public let badge: Int?
 
-    public init(id: AnyHashable, image: Image, title: String, navigationModel: any NavigationModel) {
+    public init(id: AnyHashable, image: String, title: String, navigationModel: any NavigationModel, tabRole: TabRole? = nil, badge: Int? = nil) {
         self.id = id
-        self.image = image
+        self.systemImage = image
         self.title = title
         self.navigationModel = navigationModel
+        self.role = tabRole
+        self.badge = badge
     }
 
-    public var resolvedView: AnyView {
-        AnyView(
-            content
-                .tabItem { label }
-        )
+    public var content: AnyView {
+        AnyView(NavigationModelResolvedView(model: navigationModel))
     }
-
-    private var content: some View {
-        NavigationModelResolvedView(model: navigationModel)
-    }
-
-    private var label: some View {
-        Label(
-            title: { Text(title) },
-            icon: { image }
-        )
-    }
-
 }
