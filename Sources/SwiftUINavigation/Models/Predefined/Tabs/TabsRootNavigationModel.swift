@@ -3,7 +3,8 @@ import SwiftUI
 public protocol TabsRootNavigationModel: NavigationModel {
     associatedtype ModifiedView: View
     var selectedTabModelID: AnyHashable { get set }
-    var tabsModels: [TabModel] { get set }
+    var tabsModels: [any TabModel] { get set }
+    var accessory: AnyView? { get }
     @ViewBuilder func body(for content: TabsRootNavigationModelView<Self>) -> ModifiedView
 }
 
